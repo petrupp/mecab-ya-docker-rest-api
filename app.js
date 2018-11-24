@@ -15,9 +15,6 @@ router.post('/api/v1/morpheme-analysis', function (req, res) {
       nouns: result
     });
   });
-
-  arr = []
-  arr.filter(e => Object.hasOwn)
 });
 
 const app = express();
