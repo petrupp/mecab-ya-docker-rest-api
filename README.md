@@ -4,7 +4,8 @@
 
 ### 이미지 만들기
 ```bash
-$ docker build -t hyeonjae/mecab-ya-api .
+$ cd mecab-ya-docker-rest-api
+$ docker build -t mecab-ya-api .
 ```
 
 ```bash
@@ -15,7 +16,7 @@ hyeonjae/mecab-ya-api        latest              469ca4e0ee48        9 minutes a
 
 ### 실행하기
 ```bash
-$ docker run -p 49160:8080 -d hyeonjae/mecab-ya-api
+$ docker run -p 49160:8080 -d mecab-ya-api
 ```
 
 ```bash
@@ -29,25 +30,23 @@ CONTAINER ID        IMAGE                   COMMAND             CREATED         
 호스트에서 http 요청한다.
 ```bash
 $ curl -X POST \
-  http://localhost:49160/api/v1/morpheme-analysis \
+  http://localhost:49160/api/v1/milk-default-nouns \
   -H 'content-type: application/json' \
   -d '{
 	"text": "아버지가 방에 들어가신다."
 }'
 
-```
+$ curl -X POST \
+  http://localhost:49160/api/v1/milk-pos \
+  -H 'content-type: application/json' \
+  -d '{
+	"text": "아버지가 방에 들어가신다."
+}'
 
-다음과 같이 json 타입을 반환한다.
-```json
-{
-    "nouns": [
-        "아버지",
-        "방"
-    ]
-}
-```
+
 
 
 ## 참고
 https://github.com/golbin/node-mecab-ya
+https://github.com/hyeonjae/mecab-ya-docker-rest-api
 
