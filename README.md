@@ -22,7 +22,7 @@ $ docker run -p 49160:8080 -d mecab-ya-api
 ```bash
 $ docker ps
 CONTAINER ID        IMAGE                   COMMAND             CREATED                  STATUS              PORTS                     NAMES
-453b6f7d89c8        hyeonjae/mecab-ya-api   "npm start"         Less than a second ago   Up 2 seconds        0.0.0.0:49160->8080/tcp   romantic_proskuriakova
+453b6f7d89c8        mecab-ya-api   "npm start"         Less than a second ago   Up 2 seconds        0.0.0.0:49160->8080/tcp   romantic_proskuriakova
 ```
 
 
