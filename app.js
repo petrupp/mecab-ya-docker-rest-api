@@ -26,7 +26,7 @@ router.post('/api/v1/milk-pos', function (req, res) {
             // 원하는 품사 태그 목록에 포함되어 있는지 검사
             return ['NNG', 'NNP', 'NNB', 'SN', 'SL'].includes(pos);
           })
-          .map(entry => entry[0]); // 토큰(단어)만 추출
+          // .map(entry => entry[0]); // 토큰(단어)만 추출
     res.json({
       pos: filteredResult
     });
