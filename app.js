@@ -19,6 +19,7 @@ router.post('/api/v1/milk-default-nouns', function (req, res) {
 
 router.post('/api/v1/milk-pos', function (req, res) {
   const text = req.body.text;
+  console.log('text', text, 'nouns:', result);
   mecab.pos(text, function (err, result) {
     const filteredResult = result
           .filter(entry => {
