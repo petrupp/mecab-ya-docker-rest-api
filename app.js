@@ -47,5 +47,5 @@ app.get('/ping', function(req, res){
   })
 });
 
-app.listen(process.env.PORT || 8413);
+app.listen(8413);
 
