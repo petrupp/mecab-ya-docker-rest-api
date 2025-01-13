@@ -18,19 +18,22 @@ router.post('/api/v1/milk-default-nouns', function (req, res) {
 });
 
 router.post('/api/v1/milk-pos', function (req, res) {
-  const text = req.body.text;
-  console.log('text', text, 'nouns:', result);
-  mecab.pos(text, function (err, result) {
-    const filteredResult = result
+  const data = req.body.data;
+  console.log('text',data , 'nouns:', result);
+  mecab.pos(data.text, function (err, result) {
+      if (err) {
+          return reject(err);
+      }
+      const filteredResult = result
           .filter(entry => {
-            const pos = entry[1]; // 품사 태그가 두 번째 열에 있음
-            // 원하는 품사 태그 목록에 포함되어 있는지 검사
-            return ['NNG', 'NNP', 'NNB', 'SN', 'SL'].includes(pos);
+              const pos = entry[1]; // 품사 태그가 두 번째 열에 있음
+              // 원하는 품사 태그 목록에 포함되어 있는지 검사
+              return ['NNG', 'NNP', 'NNB', 'SN', 'SL'].includes(pos);
           })
           // .map(entry => entry[0]); // 토큰(단어)만 추출
-    res.json({
-      pos: filteredResult
-    });
+          resolve({
+              pos: filteredResult
+          }); 
   });
 });
 
