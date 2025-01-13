@@ -22,7 +22,8 @@ router.post('/api/v1/milk-pos', function (req, res) {
   
   mecab.pos(text, function (err, result) {
       if (err) {
-          return reject(err);
+            console.error('Mecab Error:', err);
+            return res.status(500).json({ error: 'Mecab 처리 중 오류가 발생했습니다.' });
       }
       const filteredResult = result
           .filter(entry => {
@@ -31,9 +32,9 @@ router.post('/api/v1/milk-pos', function (req, res) {
               return ['NNG', 'NNP', 'NNB', 'SN', 'SL'].includes(pos);
           })
           // .map(entry => entry[0]); // 토큰(단어)만 추출
-          resolve({
-              pos: filteredResult
-          }); 
+      return res.json({
+          pos: filteredResult
+      });
   });
 });
 
