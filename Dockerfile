@@ -23,5 +23,5 @@ RUN npm install
 # 앱 소스 추가
 COPY . .
 
-EXPOSE 8412
+EXPOSE 8413
 CMD [ "npm", "start" ]
